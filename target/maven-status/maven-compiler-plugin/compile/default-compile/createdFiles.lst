@@ -1,0 +1,10 @@
+com\notesapp\controller\NoteController.class
+com\notesapp\service\UserService.class
+com\notesapp\config\SecurityConfig.class
+com\notesapp\model\User.class
+com\notesapp\LoginNotesAppApplication.class
+com\notesapp\model\Note.class
+com\notesapp\repository\NoteRepository.class
+com\notesapp\controller\AuthController.class
+com\notesapp\repository\UserRepository.class
+com\notesapp\service\NoteService.class

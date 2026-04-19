@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Register – Login Notes App</title>
+    <meta name="description" content="Create a new account on Login Notes App"/>
+    <style>
+        /* ── Design tokens ─────────────────────────────── */
+        :root {
+            --bg:       #0f1117;
+            --surface:  #1a1d27;
+            --border:   #2e3244;
+            --accent:   #6c63ff;
+            --accent-h: #8a84ff;
+            --text:     #e2e8f0;
+            --muted:    #8892a4;
+            --danger:   #ff5c5c;
+            --success:  #4ade80;
+            --radius:   12px;
+        }
+
+        /* ── Base ──────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        /* ── Card ──────────────────────────────────────── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 8px 32px rgba(0,0,0,.45);
+        }
+
+        .logo {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: .5rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: .25rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--muted);
+            font-size: .9rem;
+            margin-bottom: 1.75rem;
+        }
+
+        /* ── Alerts ────────────────────────────────────── */
+        .alert {
+            padding: .75rem 1rem;
+            border-radius: 8px;
+            font-size: .875rem;
+            margin-bottom: 1rem;
+        }
+        .alert-error   { background: rgba(255,92,92,.15); border: 1px solid var(--danger);  color: var(--danger);  }
+        .alert-success { background: rgba(74,222,128,.12); border: 1px solid var(--success); color: var(--success); }
+
+        /* ── Form ──────────────────────────────────────── */
+        label {
+            display: block;
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--muted);
+            margin-bottom: .4rem;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: .75rem 1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            transition: border-color .2s;
+            outline: none;
+        }
+
+        input:focus { border-color: var(--accent); }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: .85rem;
+            background: var(--accent);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background .2s, transform .1s;
+        }
+
+        button[type="submit"]:hover  { background: var(--accent-h); }
+        button[type="submit"]:active { transform: scale(.98); }
+
+        /* ── Footer link ───────────────────────────────── */
+        .footer-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: .875rem;
+            color: var(--muted);
+        }
+
+        .footer-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-link a:hover { color: var(--accent-h); text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="logo">📝</div>
+    <h1>Create Account</h1>
+    <p class="subtitle">Join the Login Notes App</p>
+
+    <!-- Error message -->
+    <div class="alert alert-error" th:if="${error}" th:text="${error}"></div>
+
+    <form th:action="@{/register}" method="post" id="registerForm">
+        <!-- CSRF token is automatically injected by Thymeleaf + Spring Security -->
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username"
+               placeholder="Choose a username" required autocomplete="username"/>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"
+               placeholder="Choose a password" required autocomplete="new-password"/>
+
+        <button type="submit" id="registerBtn">Create Account</button>
+    </form>
+
+    <p class="footer-link">
+        Already have an account? <a href="/login">Sign in</a>
+    </p>
+</div>
+
+</body>
+</html>
