@@ -2,7 +2,7 @@
 <suite name="TestSuite">
     <test name="SampleTest">
         <classes>
-            <class name="com.notesappSampleTest"/>
+            <class name="com.notesapp.SampleTest"/>
         </classes>
     </test>
 </suite>
